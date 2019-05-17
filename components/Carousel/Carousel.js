@@ -6,7 +6,7 @@ class Carousel {
         this.leftButton=this.root.querySelector('.left-button')
         this.rightButton=this.root.querySelector('.right-button')
 
-        this.display()
+        this.display('Left')
 
         this.leftButton.addEventListener('click',(e)=>{
                 this.moveLeft()
@@ -14,26 +14,34 @@ class Carousel {
         this.rightButton.addEventListener('click',(e)=>{
                 this.moveRight()
         })
+        this.root.addEventListener('dblclick',(e)=>{
+                e.preventDefault();
+        })
+        this.root.addEventListener('animationend',(e)=>{
+            this.root.querySelectorAll('.viewed').forEach(item=>item.classList.remove('viewed','exitLeft','exitRight','moveLeft','moveRight'))
+            this.imageList[this.currentIndex].classList.add('viewed')
+        })
+        this.imageList[0].classList.add('viewed')
     }
 
-    display(){
-       this.imageList[this.currentIndex].style.display='block'
+    display(dir){
+        this.imageList[this.currentIndex].classList.add(`move${dir}`)
     }
-    hide(){
-        this.imageList[this.currentIndex].style.display='none'
+    hide(dir){
+        this.imageList[this.currentIndex].classList.remove('moveLeft','moveRight')
+        this.imageList[this.currentIndex].classList.add(`exit${dir}`)
     }
-
     moveLeft(){
-        this.hide()
+        this.hide('Left')
         if(--this.currentIndex<0)
             this.currentIndex=this.imageList.length-1
-        this.display()
+        this.display('Left')
     }
     moveRight(){
-        this.hide()
+        this.hide('Right')
         if(++this.currentIndex>=this.imageList.length)
             this.currentIndex=0
-        this.display()
+        this.display('Right')
     }
 }
 

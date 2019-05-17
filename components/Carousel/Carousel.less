@@ -28,6 +28,7 @@
     top: 50%; 
     left: 25px;
     transform: translate(0, -50%);
+    z-index: 100;
   }
   .right-button {
     top: 50%; 
@@ -36,6 +37,49 @@
   }
   img {
     .width-100();
-    display: none;
+    position: absolute;
+    transform:translate(100%);
+    
   }
+  .left{
+    animation:moveRight .5s;
+  }
+  .exitLeft{
+    animation:exitLeft .5s;
+  }
+  .right{
+    animation: moveRight .5s;
+  }
+  .exitRight{
+    animation: exitRight .5s;
+  }
+  .viewed{
+    transform:translate(0)
+  }
+}
+
+@keyframes moveRight{
+  from{
+    transform: translate(100%);
+  }
+  to{
+    transform:translate(0%);
+  }
+}
+
+@keyframes moveLeft{
+  from{
+    transform:translate(100%);
+  }
+  to{
+    transform:translate(0%);
+  }
+}
+@keyframes exitRight{
+  from{transform: translate(0%)}
+  to{transform: translate(100%)}
+}
+@keyframes exitLeft{
+  from{transform: translate(0%)}
+  to{transform: translate(-100%)}
 }
