@@ -304,13 +304,13 @@ body {
   position: absolute;
   transform: translate(100%);
 }
-.carousel .left {
+.carousel .moveLeft {
   animation: moveRight 0.5s;
 }
 .carousel .exitLeft {
   animation: exitLeft 0.5s;
 }
-.carousel .right {
+.carousel .moveRight {
   animation: moveRight 0.5s;
 }
 .carousel .exitRight {
